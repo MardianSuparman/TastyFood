@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Auth;
 use App\Http\Controllers\Controller;
 use App\Models\User;
 use Illuminate\Foundation\Auth\RegistersUsers;
+// use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 
@@ -68,5 +69,14 @@ class RegisterController extends Controller
             'email' => $data['email'],
             'password' => Hash::make($data['password']),
         ]);
+    }
+
+    protected function registered(\illuminate\Http\Request $request, $user)
+    {
+        // logout the user after registration
+        $this->guard()->logout();
+
+        // redirect to the login page
+        return redirect($this->redirectPath())->with('status', 'Registration successful');
     }
 }
