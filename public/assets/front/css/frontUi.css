@@ -1,0 +1,711 @@
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;900&display=swap");
+
+body,
+html {
+    font-family: "Montserrat", sans-serif;
+    background-color: #f4f4f4;
+    transform: translateZ(0); /* Memanfaatkan hardware acceleration */
+    will-change: transform; /* Memberi tahu browser untuk mengoptimasi elemen ini */
+    overflow-x: hidden;
+    height: 100%;
+    width: 100%;
+    padding: 0;
+    margin: 0;
+}
+
+/* Header */
+.background-image {
+    background-image: url('/assets/front/assets/img/Group 70@2x.png');
+    background-repeat: no-repeat;
+    background-position: center; /* Center the image */
+    background-size: cover; /* Ensure the image covers the area */
+    position: relative;
+    overflow: hidden;
+    color: white;
+    width: 110%;
+    height: 60%;
+}
+
+
+.head {
+    background-size: cover;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+}
+
+.navbar-brand {
+    font-size: 1.8rem;
+    font-family: Arial, sans-serif;
+    margin-left: -80px;
+    color: white; /* Default color */
+    transition: color 0.3s ease; /* Optional: smooth transition effect */
+}
+
+.navbar-brand:hover {
+    color: white; /* Change to white on hover */
+}
+
+
+.navbar {
+    padding: 30px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.container h1 {
+    font-size: 3em;
+    font-weight: bold;
+    color: white; /* Added white color */
+}
+
+.navbar-nav .nav-link {
+    font-weight: bold;
+    margin-right: 20px;
+    margin-top: 10px;
+    color: white; /* Default color */
+}
+
+.navbar-nav .nav-link:hover {
+    color: #ddd; /* Change to white on hover */
+    /* text-decoration: underline; Optional: add underline on hover for emphasis */
+}
+
+
+.content {
+    position: absolute;
+    top: 50%;
+    left: 50px; /* Space from the left */
+    right: 10%;
+    max-width: 655px;
+    transform: translateY(-50%); /* Centers vertically */
+    padding: 0 20px;
+    color: white;
+    margin-top: 50px;
+    margin-left: 60px;
+}
+
+.content h1 {
+    font-weight: 300;
+    text-align: left; /* Align text to the left */
+    color: white;
+    font-weight: 500;
+    font-size: 3em;
+    margin: 0;
+    /* Optionally add padding or margin for spacing */
+}
+
+/* General Section Styles */
+.slider, .tastyFood {
+    background-color: #f4f4f4;
+    padding: 50px 0;
+}
+
+/* .slider {
+    margin: -60px 0 -200px 0;
+} */
+
+.content-carousel {
+    max-width: 1130px;
+    margin: auto;
+    border-radius: 30px;
+}
+
+/* Carousel */
+.carousel-item img {
+    width: 100%;
+    max-height: 450px;
+    border-radius: 30px;
+    object-fit: cover;
+    margin: 0 20px 20px 0;
+}
+
+/* Carousel Controls */
+.carousel-control-prev-icon, .carousel-control-next-icon {
+    background-color: white;
+    border-radius: 50%;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+    width: 50px;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 2;
+}
+
+.carousel-control-prev {
+    left: -90px;
+}
+
+.carousel-control-next {
+    right: -90px;
+}
+
+.carousel-control-prev-icon i, .carousel-control-next-icon i {
+    font-size: 1.5rem;
+    color: black;
+}
+
+/* Fully opaque controls */
+.carousel-control-prev, .carousel-control-next {
+    opacity: 1;
+    pointer-events: auto;
+}
+
+
+/* Responsive Adjustments */
+@media (max-width: 768px) {
+    .navbar {
+        padding: 20px;
+    }
+    .content {
+        padding: 0 10px;
+        left: 10px;
+        right: 10px;
+    }
+    .btn-black {
+        width: 100%;
+    }
+}
+
+/* Galleri */
+.photo {
+    background-color: white;
+    padding: 50px 0; /* Tambahkan padding agar tidak terlalu rapat dengan elemen lainnya */
+}
+
+.container-img {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center; /* Mengatur agar gambar tetap di tengah secara horizontal */
+    text-align: center; /* Memastikan konten tetap rapi di tengah */
+    margin-top: 90px;
+}
+
+.rounded-img {
+    border-radius: 20px;
+    width: 270px;
+    height: 270px;
+    object-fit: cover;
+    box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.2);
+    margin: 10px; /* Tambahkan margin untuk jarak antar gambar */
+}
+
+.rounded-img img {
+    width: 100%; /* Lebar gambar 100% dari container */
+    height: 100%; /* Tinggi gambar 100% dari container */
+    object-fit: cover; /* Gambar akan menutupi seluruh area tanpa meregang */
+}
+
+.row {
+    justify-content: center; /* Mengatur gambar tetap rapi di tengah */
+}
+
+/* aabout */
+.tastyFood {
+    background-color: #f4f4f4;
+    padding: 50px 0 50px; /* Ubah padding bawah menjadi lebih kecil */
+    max-height: 800px;
+    display: flex;
+    flex-direction: column; /* Atur arah elemen menjadi kolom */
+    align-items: center; /* Center elemen di dalam */
+}
+
+.visi {
+    background-color: white;
+    padding: 30px 0; /* Menambahkan ruang di atas dan bawah */
+    min-height: 400px; /* Atur tinggi minimum untuk elemen */
+}
+
+.misi {
+    background-color: white;
+    padding: 30px 0; /* Menambahkan ruang di atas dan bawah */
+    min-height: 400px; /* Atur tinggi minimum untuk elemen */
+}
+
+.tasty-food-section {
+    display: flex;
+    max-width: 1100px;
+    margin: 100px auto;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.text-content {
+    max-width: 600px;
+    margin-left: 0; /* Menghilangkan margin negatif */
+    padding-right: 20px; /* Memberikan sedikit ruang antara teks dan gambar */
+}
+
+.text-content h3 {
+    font-size: 1.2em;
+    font-weight: bold;
+    margin-top: 20px;
+    padding-bottom: 15px;
+}
+
+.text-content-tasty h3 {
+    font-size: 1.5rem;
+}
+
+.text-content p {
+    font-size: 0.9rem;
+    line-height: 1.5;
+    margin-bottom: 15px;
+}
+
+.image-content {
+    display: flex;
+    gap: 5px;
+    margin-right: 0; /* Menghilangkan margin negatif */
+    overflow: hidden;
+}
+
+.image-content img {
+    width: 250px;
+    height: 350px;
+    border-radius: 17px;
+    object-fit: cover;
+}
+
+.rounded-image, .rounded-image-visi, .rounded-image-misi{
+    border-radius: 20px; /* Konsisten di semua gambar */
+    box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.2);
+    object-fit: cover; /* Pastikan gambar tetap sesuai proporsi */
+}
+
+.rounded-image-visi {
+    width: 250px; /* Atur lebar kotak */
+    height: 250px; /* Atur tinggi kotak */
+    object-fit: cover; /* Pastikan gambar terpotong proporsional */
+    overflow: hidden;
+    justify-content: center;
+    margin: 0 10px; /* Jarak antar gambar */
+}
+
+.rounded-image-misi {
+    width: 600px; /* Lebar lebih besar */
+    height: 250px; /* Tinggi lebih kecil */
+    object-fit: cover; /* Pastikan gambar tetap proporsional */
+    overflow: hidden;
+    justify-content: center;
+    margin: 0 10px; /* Jarak antar gambar */
+    border-radius: 15px; /* Opsional: Untuk memberikan efek sudut melengkung */
+}
+
+
+/* Responsivitas */
+@media (max-width: 768px) {
+    .tasty-food-section {
+        flex-direction: column; /* Teks dan gambar akan tersusun vertikal pada layar kecil */
+        margin: 100px auto;
+    }
+
+    .text-content {
+        text-align: center;
+        padding: 0 15px;
+    }
+
+    .image-content {
+        justify-content: center;
+    }
+
+    .image-content img {
+        width: 200px;
+        height: 300px;
+        border-radius: 30px;
+    }
+}
+
+/* News */
+.news-content {
+    background-color: #f4f4f4;
+    flex-direction: column; /* Atur arah elemen menjadi kolom */
+    padding: 50px 0 50px; /* Ubah padding bawah menjadi lebih kecil */
+    align-items: center; /* Center elemen di dalam */
+    display: flex;
+    height: auto;
+}
+
+.news-other {
+    background-color: #ffffff;
+    padding: 30px 0 30px; /* Ubah padding bawah menjadi lebih kecil */
+}
+
+.row {
+    display: flex; /* Menggunakan flexbox untuk satu baris */
+    align-items: center; /* Vertikal center pada elemen */
+}
+
+.text-content-news {
+    padding-left: 15px; /* Menambahkan padding agar teks tidak terlalu dekat dengan gambar */
+}
+
+.text-content-news h3 {
+    font-size: 2rem;
+}
+
+.text-content-news p {
+    font-size: 1rem;
+    line-height: 1.5;
+}
+
+.news-content {
+    background-color: #f4f4f4;
+    padding: 50px 0 50px; /* Ubah padding bawah menjadi lebih kecil */
+    height: auto;
+    flex-direction: column; /* Atur arah elemen menjadi kolom */
+}
+
+.rounded-image-news {
+    width: 100%; /* Lebar lebih besar */
+    height: 600px; /* Tinggi lebih kecil */
+    object-fit: cover; /* Pastikan gambar tetap proporsional */
+    overflow: hidden;
+    justify-content: center;
+    margin: 0 10px; /* Jarak antar gambar */
+    border-radius: 15px; /* Opsional: Untuk memberikan efek sudut melengkung */
+}
+
+.btn-black {
+    display: inline-block;
+    padding: 15px 30px;
+    font-size: 14px;
+    font-weight: 600; /* Bold text */
+    color: white; /* Teks berwarna putih */
+    background-color: black; /* Warna latar belakang tombol hitam */
+    border: none; /* Menghapus border default */
+    text-align: center;
+    text-decoration: none; /* Menghapus garis bawah */
+    cursor: pointer; /* Menampilkan pointer saat hover */
+    transition: background-color 0.3s ease; /* Efek transisi saat hover */
+    width: 300px; /* Lebar tombol */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.btn-black:hover {
+    background-color: #333; /* Warna latar belakang saat hover */
+}
+
+.container-news {
+    display: flex;
+    flex-wrap: wrap;
+
+    padding-left: 2rem;
+    padding-right: 2rem;
+    margin-top: 1rem;
+
+    margin-bottom: 5px;
+}
+
+.news-other-title {
+    margin-bottom: 20px; /* Space between title and news cards */
+}
+
+.news-column {
+    display: flex;
+    flex-direction: column;
+}
+
+.news-card-big, .news-card {
+    margin-bottom: 15px; /* Jarak antar card */
+}
+
+.aspect-ratio {
+    width: 100%; /* Full width */
+    height: 0;
+    padding-bottom: 66.67%; /* 3:2 aspect ratio */
+    position: relative;
+    overflow: hidden; /* Hide overflow */
+}
+
+.aspect-ratio img {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 100%; /* Cover the full width */
+    height: auto; /* Maintain aspect ratio */
+    min-height: 100%; /* Ensure it fills the container height */
+    transform: translate(-50%, -50%); /* Center the image */
+}
+
+
+.news-card {
+    border: none;
+    border-radius: 20px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1); /* Initial box shadow */
+    overflow: hidden; /* Agar konten tidak melampaui sudut bulat */
+    transition: box-shadow 0.3s; /* Efek transisi saat hover */
+    display: flex;
+    flex-direction: column; /* Pastikan konten dalam kolom disusun secara vertikal */
+    justify-content: space-between; /* Memastikan ruang terdistribusi merata */
+    transition: transform 0.3s ease, background-color 0.3s ease;
+}
+
+.news-card:hover {
+    transform: translateY(-5px); /* Lift the card slightly */
+    background-color: rgba(255, 255, 255, 0.8); /* Change background on hover */
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2); /* Darker shadow on hover */
+}
+
+.news-img-top {
+    border-top-left-radius: 10px; /* Sudut kiri atas bulat */
+    border-top-right-radius: 10px; /* Sudut kanan atas bulat */
+    object-fit: cover;
+    display: block;
+}
+
+.news-body {
+    padding: 20px;
+}
+
+.content-news{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    flex-grow: 1; /* Membuat .news-body mengisi ruang tersisa */
+
+}
+
+.news-body a {
+    margin-top: auto;
+}
+
+.news-title {
+    font-size: 1.25rem;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+.news-text {
+    font-size: 0.85rem;
+    font-weight: 600;
+    line-height: 1.5;
+    color: #000000; /* Warna teks yang lebih lembut */
+    margin-bottom: 15px;
+    margin-right: 30px;
+    margin-top: auto;
+}
+
+.news {
+    border-radius: 15px;
+    overflow: hidden;
+}
+
+.read-more {
+    color: #f39c12;
+    font-weight: bold;
+    position: relative;
+    display: inline-block;
+    text-decoration: none;
+    margin-top: auto;
+
+}
+
+.read-more::after {
+    content: '';
+    position: absolute;
+    left: 50%;
+    bottom: 0;
+    width: 0;
+    height: 2px; /* Ketebalan garis bawah */
+    background-color: #f39c12; /* Ganti dengan warna yang diinginkan */
+    transition: width 0.3s ease, left 0.3s ease;
+}
+
+.read-more:hover::after {
+    width: 100%;
+    left: 0;
+}
+
+/* contact */
+.contact-form-section {
+    padding: 50px;
+    background-color: #fff;
+}
+
+.contact-form-section input,
+.contact-form-section textarea {
+    width: 100%;
+    padding: 25px;
+    margin-bottom: 20px;
+    border-radius: 10px;
+    border: 1px solid #000000;
+}
+
+.contact-form-section textarea {
+    height: 268px;
+}
+
+.submit-btn {
+    display: block;
+    width: 100%;
+    background-color: #000;
+    color: #fff;
+    border: none;
+    padding: 17px;
+    text-align: center;
+    font-size: 18px;
+    font-weight: bold;
+    border-radius: 11px;
+    cursor: pointer;
+    /* font-family: 'Poppins', sans-serif; */
+    text-decoration: none;
+    padding: 1.5rem;
+}
+
+.submit-btn:hover {
+    background-color: #333;
+}
+
+.info-section {
+    display: flex;
+    justify-content: space-between;
+    padding: 50px;
+    background-color: #000;
+    color: white;
+}
+
+.info-section div {
+    text-align: center;
+}
+
+.info-section p {
+    font-size: 16px;
+    margin: 0;
+}
+/* ICONS */
+.body-contact {
+    font-family: Arial, sans-serif;
+    justify-content: center;
+    align-items: center;
+    display: flex;
+    height: 50vh;
+    margin: 0;
+        background-color: #fff;
+}
+.kontak-info {
+    justify-content: space-around;
+    display: flex;
+    width: 80%;
+
+}
+.contact-info {
+    text-align: center;
+    margin-top: 50px;
+}
+.contact-info .icon {
+    background-color: black;
+    justify-content: center;
+    align-items: center;
+    margin: 0 auto 20px;
+    border-radius: 50%;
+    color: white;
+    display: flex;
+    height: 80px;
+    width: 80px;
+}
+.contact-info h5 {
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+/* Maps */
+#map {
+    height: 500px;
+  }
+
+  gmp-map {
+    height: 400px;
+  }
+
+/* Footer */
+.footer {
+    padding: 5rem;
+    /* margin-top: 3rem; */
+    background-color: #000000;
+    color: #f4f4f4;
+}
+.footer h5 {
+    font-weight: bold;
+    margin-bottom: 20px;
+}
+.footer p {
+    color: #b5b5b5;
+}
+.footer a {
+    color: #ffffff;
+    text-decoration: none;
+}
+.footer a:hover {
+    text-decoration: underline;
+}
+.social-icons a {
+    display: inline-block;
+    width: 40px;
+    height: 40px;
+    line-height: 40px;
+    margin-right: 10px;
+    text-align: center;
+    color: #ffffff;
+    border-radius: 50%;
+    background-color: #3b5998;
+}
+.social-icons a.twitter {
+    background-color: #1da1f2;
+}
+.social-icons a i {
+    font-size: 20px;
+}
+.footer-bottom {
+    text-align: center;
+    padding-top: 20px;
+    border-top: 1px solid #333333;
+    margin-top: 20px;
+}
+.contact-info li {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+    font-weight: 700;
+    font-size: small;
+}
+.contact-info li i {
+    margin-right: 10px;
+}
+.list-unstyled li {
+    margin-bottom: 10px;
+    font-weight: 700;
+    font-size: small;
+}
+
+.botten {
+    display: grid;
+    place-items: center; /* Menengahkan item secara horizontal dan vertikal */
+    /* height: 100vh; Mengatur tinggi kontainer ke 100% viewport */
+    padding-bottom: 25px;
+}
+
+.btn-more {
+    margin-top: 20px;
+    padding: 10px 20px;
+    background-color: #000;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    text-transform: uppercase;
+    font-weight: bold;
+    text-decoration: none;
+}
+
+.btn-more:hover {
+    background-color: #555; /* Change to a lighter shade */
+    color: #fff; /* Maintain text color */
+    transition: background-color 0.3s; /* Smooth transition */
+}

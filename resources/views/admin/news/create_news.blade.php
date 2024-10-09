@@ -2,7 +2,10 @@
 @section('content')
     <div class="card card-primary card-outline m-4"> <!--begin::Header-->
         <div class="card-header">
-            <div class="card-title">Quick Example</div>
+            <div class="card-title">Add News</div>
+            <div class="float-end">
+                <a href="{{ route('news.index') }}"><i class="nav-icon bi bi-arrow-left"></i></a>
+            </div>
         </div> <!--end::Header--> <!--begin::Form-->
         <form action="{{ route('news.store') }}" method="POST" enctype="multipart/form-data">
             @csrf <!--begin::Body-->

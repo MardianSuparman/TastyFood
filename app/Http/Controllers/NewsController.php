@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use Alert;
 use Storage;
-use App\Models\News;
+use App\Models\News as Berita;
 use Illuminate\Http\Request;
 
 class NewsController extends Controller
@@ -15,7 +15,7 @@ class NewsController extends Controller
     public function index()
     {
         //Menampilkan News
-        $news = News::latest()->paginate(5);
+        $news = Berita::latest()->paginate(5);
         confirmDelete("Delete", "Are you sure you want to delete?");
         return view('admin.news.index_news', compact('news'));
     }
@@ -36,12 +36,12 @@ class NewsController extends Controller
     {
         //Add News
         $this->validate($request, [
-            'image' => 'required|image|mimes:png,jpg,jpeg|max:2048',
+            'image' => 'required|image|mimes:png,jpg,jpeg',
             'title' => 'required',
             'subtitle' => 'required',
         ]);
 
-        $news = new News();
+        $news = new Berita();
         $news->title = $request->title;
         $news->subtitle = $request->subtitle;
 
@@ -59,7 +59,7 @@ class NewsController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(News $news)
+    public function show(Berita $news)
     {
         //
     }
@@ -70,7 +70,7 @@ class NewsController extends Controller
     public function edit($id)
     {
         //Redirect Update News
-        $news = News::find($id);
+        $news = Berita::findOrFail($id);
         return view('admin.news.create_news', compact('news'));
     }
 
@@ -86,23 +86,23 @@ class NewsController extends Controller
             'subtitle' => 'required',
         ]);
 
-        $news = News::find($id); News::findOrFail($id);
-        $news->title = $request->title;
-        $news->subtitle = $request->subtitle;
+        $news = Berita::findOrFail($id);
+        $news -> title = $request -> title;
+        $news -> subtitle = $request -> subtitle;
 
         // upload image
         $images = $request->file('image');
         $images->storeAs('public/news/', $images->hashName());
 
         // delete produk
-        Storage::delete('public/news/' . $news->image);
+        Storage::delete('public/news/'. $news->image);
 
         $news->image = $images->hashName();
 
         $news->save();
         Alert::success('Success', 'Data updated successfully')->autoClose(2000);
 
-        return redirect()->route('news.index');
+        return redirect()->route('aboute.index');
     }
 
     /**
@@ -111,7 +111,7 @@ class NewsController extends Controller
     public function destroy($id)
     {
         //Delete News
-        $news = News::findOrFail($id);
+        $news = Berita::findOrFail($id);
         Storage::delete('public/news/' . $news->image);
         $news->delete();
         Alert::toast('Succes', 'Data successfully deleted')->success('Succes', 'Data successfully deleted');

@@ -2,38 +2,40 @@
 @section('content')
     <div class="card card-primary card-outline m-4"> <!--begin::Header-->
         <div class="card-header">
-            <div class="card-title">Quick Example</div>
+            <div class="card-title">Update Contact</div>
+            <div class="float-end">
+                <a href="{{ route('contact.index') }}"><i class="nav-icon bi bi-arrow-left"></i></a>
+            </div>
         </div> <!--end::Header--> <!--begin::Form-->
-        <form action="{{ route('contact.update', $contact->id) }}" method="POST" enctype="multipart/form-data">
+        <form action="{{ route('contact.update', $contacts->id) }}" method="POST" enctype="multipart/form-data">
             @method('put')
             @csrf <!--begin::Body-->
             <div class="card-body">
-                <div class="input-group mb-3"> <input type="file" id="inputGroupFile02" value="{{ old('image') }}"
-                        class="form-control
-                    @error('image') is-invalid @enderror" name="image"
-                        required></input>
-                    @error('image')
-                        <span class="invalid-feedback" role="alert">
-                            <strong>{{ $message }}</strong>
-                        </span>
-                    @enderror
-                    <label class="input-group-text" for="inputGroupFile02">Upload</label>
-                </div>
                 <div class="mb-3">
-                    <label for="title" class="form-label">Title</label>
-                    <input type="text" class="form-control @error('title') is-invalid @enderror" name="title" value="{{ old('title') }}"
-                        id="title" placeholder="Title" required></input>
-                    @error('title')
+                    <label for="NoTlpn" class="form-label">No Phone</label>
+                    <input type="text" class="form-control @error('NoTlpn') is-invalid @enderror" name="NoTlpn" value="{{ old('NoTlpn') }}"
+                        id="NoTlpn" placeholder="Title" required></input>
+                    @error('NoTlpn')
                         <span class="invalid-feedback" role="alert">
                             <strong>{{ $message }}</strong>
                         </span>
                     @enderror
                 </div>
                 <div class="mb-3">
-                    <label for="subtitle" class="form-label">Subtitle</label>
-                    <input type="text" class="form-control @error('subtitle') is-invalid @enderror" name="subtitle" value="{{ old('subtitle') }}"
-                        id="subtitle" placeholder="Subtitle" required></input>
-                    @error('subtitle')
+                    <label for="email" class="form-label">Email</label>
+                    <input type="text" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}"
+                        id="email" placeholder="email" required></input>
+                    @error('email')
+                        <span class="invalid-feedback" role="alert">
+                            <strong>{{ $message }}</strong>
+                        </span>
+                    @enderror
+                </div>
+                <div class="mb-3">
+                    <label for="adres" class="form-label">Adres</label>
+                    <input type="text" class="form-control @error('adres') is-invalid @enderror" name="adres" value="{{ old('adres') }}"
+                        id="adres" placeholder="adres" required></input>
+                    @error('adres')
                         <span class="invalid-feedback" role="alert">
                             <strong>{{ $message }}</strong>
                         </span>

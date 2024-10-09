@@ -15,6 +15,7 @@ class ContactController extends Controller
     {
         //Menempilkan Contact
         $contacts = Contact::latest()->paginate(5);
+        confirmDelete("Delete", "Are you sure you want to delete?");
         return view('admin.contact.index_contact', compact('contacts'));
     }
 
@@ -70,7 +71,7 @@ class ContactController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Contact $contact)
+    public function update(Request $request,  $id)
     {
         //Update Contact
         $this->validate($request, [
@@ -79,7 +80,7 @@ class ContactController extends Controller
             'adres'=> 'required',
         ]);
 
-        $contact = new Contact();
+        $contact =  Contact::findOrFail($id);
         $contact->NoTlpn = $request->NoTlpn;
         $contact->email = $request->email;
         $contact->adres = $request->adres;

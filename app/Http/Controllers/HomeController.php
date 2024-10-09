@@ -28,7 +28,7 @@ class HomeController extends Controller
         if ($user->isAdmin == 1) {
             return view('admin.index');
         } else {
-        return view('home');
+        return view('HomePage');
         }
     }
 }

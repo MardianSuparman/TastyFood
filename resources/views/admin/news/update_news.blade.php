@@ -3,8 +3,11 @@
     <div class="card card-primary card-outline m-4"> <!--begin::Header-->
         <div class="card-header">
             <div class="card-title">Quick Example</div>
+            <div class="float-end">
+                <a href="{{ route('news.index') }}" ><i class=" nav-icon bi bi-arrow-left"></i></a>
+            </div>
         </div> <!--end::Header--> <!--begin::Form-->
-        <form action="{{ route('news.update', $news->id) }}" method="POST" enctype="multipart/form-data">
+        <form action="{{ route('update.news', $news->id) }}" method="POST" enctype="multipart/form-data">
             @method('put')
             @csrf <!--begin::Body-->
             <div class="card-body">
@@ -21,7 +24,7 @@
                 </div>
                 <div class="mb-3">
                     <label for="title" class="form-label">Title</label>
-                    <input type="text" class="form-control @error('title') is-invalid @enderror" name="title" value="{{ old('title') }}"
+                    <input type="text" class="form-control @error('title') is-invalid @enderror" name="title" value="{{ old('title', $news->title) }}"
                         id="title" placeholder="Title" required></input>
                     @error('title')
                         <span class="invalid-feedback" role="alert">
@@ -31,7 +34,7 @@
                 </div>
                 <div class="mb-3">
                     <label for="subtitle" class="form-label">Subtitle</label>
-                    <input type="text" class="form-control @error('subtitle') is-invalid @enderror" name="subtitle" value="{{ old('subtitle') }}"
+                    <input type="text" class="form-control @error('subtitle') is-invalid @enderror" name="subtitle" value="{{ old('subtitle', $news->subtitle) }}"
                         id="subtitle" placeholder="Subtitle" required></input>
                     @error('subtitle')
                         <span class="invalid-feedback" role="alert">

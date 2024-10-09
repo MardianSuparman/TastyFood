@@ -2,7 +2,10 @@
 @section('content')
     <div class="card card-primary card-outline m-4"> <!--begin::Header-->
         <div class="card-header">
-            <div class="card-title">Quick Example</div>
+            <div class="card-title">Update Galery</div>
+            <div class="float-end">
+                <a href="{{ route('galery.index') }}"><i class="nav-icon bi bi-arrow-left"></i></a>
+            </div>
         </div> <!--end::Header--> <!--begin::Form-->
         <form action="{{ route('galery.update', $galerys->id) }}" method="POST" enctype="multipart/form-data">
             @method('put')

@@ -4,7 +4,7 @@
         <div class="card-header">
             <h3 class="card-title">Contact</h3>
             <div class="float-end">
-                <a href="{{ route('contact.create') }}" class="btn btn-sm btn-outline-secondary"><i class=" nav-icon bi bi-plus-lg"></i></a>
+                <a href="{{ route('contact.create') }}"><i class=" nav-icon bi bi-plus-lg"></i></a>
             </div>
         </div> <!-- /.card-header -->
         <div class="card-body p-0">
@@ -32,7 +32,7 @@
                                 <form action="{{ route('contact.destroy', $data->id) }}" method="POST" class="float-end">
                                     @csrf
                                     @method('DELETE')
-                                    <a href="{{ route('contact.show', $data->id) }}" class="btn btn-sm btn-dark">Show</a> |
+                                    {{-- <a href="{{ route('contact.show', $data->id) }}" class="btn btn-sm btn-dark">Show</a> | --}}
                                     <a href="{{ route('contact.edit', $data->id) }}" class="btn btn-sm btn-success">Edit</a>
                                     |
                                     <a href="{{ route('contact.destroy', $data->id) }}" class="btn btn-sm btn-danger"
