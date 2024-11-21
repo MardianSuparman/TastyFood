@@ -23,22 +23,22 @@ html {
     overflow: hidden;
     color: white;
     width: 110%;
-    height: 60%;
+    height: 60vh
 }
 
 
 .head {
     background-size: cover;
     position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
     bottom: 0;
+    right: 0;
+    left: 0;
+    top: 0;
 }
 
 .navbar-brand {
     font-size: 1.8rem;
-    font-family: Arial, sans-serif;
+    /* font-family: Arial, sans-serif; */
     margin-left: -80px;
     color: white; /* Default color */
     transition: color 0.3s ease; /* Optional: smooth transition effect */
@@ -50,7 +50,7 @@ html {
 
 
 .navbar {
-    padding: 30px;
+    padding: 20px;
     box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
 }
 
@@ -70,6 +70,61 @@ html {
 .navbar-nav .nav-link:hover {
     color: #ddd; /* Change to white on hover */
     /* text-decoration: underline; Optional: add underline on hover for emphasis */
+}
+
+.navbar-toggler {
+    background-color: transparent; /* Menghilangkan background default */
+    border-color: none; /* Mengubah warna border menjadi putih */
+}
+
+.navbar-toggler:focus {
+    outline: none; /* Menghapus outline saat tombol difokuskan */
+}
+
+/* Sidebar */
+.sidebar {
+    background-color: rgba(0, 0, 0, 0.8);
+    transition: left 0.3s ease; /* Transisi untuk animasi */
+    flex-direction: column;
+    position: fixed;
+    display: flex;
+    height: 100vh;
+    z-index: 1000;
+    padding: 20px;
+    left: -300px; /* Menyembunyikan sidebar */
+    width: 300px;
+    top: 0;
+}
+
+.sidebar.show {
+    left: 0; /* Menampilkan sidebar saat aktif */
+}
+
+.sidebar-header {
+    display: flex;
+    align-items: center; /* Menyelaraskan item secara vertikal */
+    justify-content: space-between; /* Memberi jarak antara tombol dan judul */
+    margin-bottom: 20px; /* Jarak di bawah header */
+}
+
+.close-btn {
+    background: none;
+    border: none;
+    font-size: 2rem;
+    color: white;
+    cursor: pointer;
+}
+
+.sidebar-header h2 {
+    color: white;
+    margin: 0; /* Menghapus margin default */
+    font-size: 1.5rem; /* Menyesuaikan ukuran font jika perlu */
+}
+
+@media (max-width: 768px) {
+    .navbar-collapse {
+        display: none !important;
+    }
 }
 
 
@@ -96,8 +151,116 @@ html {
     /* Optionally add padding or margin for spacing */
 }
 
+/* Media Query untuk perangkat lebih kecil */
+@media (max-width: 768px) {
+    .hero {
+        height: 70vh; /* Sesuaikan tinggi untuk perangkat kecil */
+        width: 60vw; /* Sedikit kurangi lebar di perangkat kecil */
+        right: -20px; /* Atur offset agar tidak menghalangi */
+    }
+
+    .content {
+        margin-left: 70px;
+    }
+
+}
+
+@media (max-width: 480px) {
+    .hero {
+        height: 60vh; /* Sesuaikan tinggi lebih kecil untuk ponsel */
+        width: 70vw; /* Lebar diatur lebih kecil */
+        right: -10px; /* Offset ke kanan lebih kecil di ponsel */
+    }
+
+    .content {
+        margin-left: 10px;
+    }
+
+}
+
+/* Responsif untuk perangkat kecil */
+@media (max-width: 768px) {
+    /* Navbar */
+    .navbar {
+        padding: 20px;
+    }
+
+    .navbar-brand {
+        font-size: 1.5rem;
+        margin-left: 0;
+    }
+
+    .navbar-nav .nav-link {
+        margin-right: 10px;
+        margin-top: 5px;
+    }
+
+    /* Content */
+    .content {
+        top: 50%;
+        left: 20px;
+        right: 20px;
+        max-width: 100%;
+        /* padding: 0 15px; */
+        transform: translateY(-50%);
+    }
+
+    .content h1 {
+        font-size: 2.2em;
+    }
+
+    /* Button */
+    .btn-black {
+        width: 100%;
+        font-size: 16px;
+        padding: 12px 20px;
+    }
+}
+
+@media (max-width: 480px) {
+    /* Navbar */
+    .navbar {
+        padding: 15px;
+    }
+
+    .navbar-brand {
+        font-size: 1.2rem;
+        margin-left: 0;
+    }
+
+    .navbar-nav .nav-link {
+        margin-right: 5px;
+        margin-top: 5px;
+        font-size: 0.9rem;
+    }
+
+    /* Content */
+    .content {
+        top: 50%;
+        left: 10px;
+        right: 10px;
+        max-width: 100%;
+        padding: 0 10px;
+        transform: translateY(-50%);
+    }
+
+    .content h1 {
+        font-size: 1.8em;
+    }
+
+    /* Button */
+    .btn-black {
+        width: 100%;
+        font-size: 14px;
+        padding: 10px 15px;
+    }
+}
+
+
+/* GALLERY */
+
 /* General Section Styles */
-.slider, .tastyFood {
+.slider {
     background-color: #f4f4f4;
     padding: 50px 0;
 }
@@ -107,7 +270,7 @@ html {
 } */
 
 .content-carousel {
-    max-width: 1130px;
+    max-width: 85%;
     margin: auto;
     border-radius: 30px;
 }
@@ -118,7 +281,7 @@ html {
     max-height: 450px;
     border-radius: 30px;
     object-fit: cover;
-    margin: 0 20px 20px 0;
+    /* margin: 0 20px 20px 0; */
 }
 
 /* Carousel Controls */
@@ -137,12 +300,45 @@ html {
     z-index: 2;
 }
 
+/* Optional: Customize button styles for better responsiveness */
+.carousel-control-prev,
+.carousel-control-next {
+    width: 10%; /* Adjust width as needed */
+    height: 100%; /* Full height of the carousel */
+    opacity: 0.7; /* Slightly transparent */
+}
+
+.carousel-control-prev:hover,
+.carousel-control-next:hover {
+    opacity: 1; /* Fully visible on hover */
+}
+
+/* Media query to adjust button sizes on smaller screens */
+@media (max-width: 768px) {
+    .carousel-control-prev,
+    .carousel-control-next {
+        width: 15%; /* Wider buttons on smaller screens */
+    }
+}
+
 .carousel-control-prev {
-    left: -90px;
+    left: -65px;
 }
 
 .carousel-control-next {
-    right: -90px;
+    right: -65px;
+}
+
+@media (max-width: 480px) {
+
+    .carousel-control-prev {
+        left: -30px;
+    }
+
+    .carousel-control-next {
+        right: -30px;
+    }
+
 }
 
 .carousel-control-prev-icon i, .carousel-control-next-icon i {
@@ -175,41 +371,46 @@ html {
 /* Galleri */
 .photo {
     background-color: white;
-    padding: 50px 0; /* Tambahkan padding agar tidak terlalu rapat dengan elemen lainnya */
+    padding-top: 35px;
+    padding-bottom: 90px;
+    /* margin-bottom: -150px; */
+}
+
+#photo-container {
+    margin: 0 auto; /* Memusatkan kontainer */
 }
 
 .container-img {
     display: flex;
     flex-wrap: wrap;
-    justify-content: center; /* Mengatur agar gambar tetap di tengah secara horizontal */
-    text-align: center; /* Memastikan konten tetap rapi di tengah */
-    margin-top: 90px;
+    justify-content: center;
+    align-items: center;
+    /* margin-top: 90px; */
+    padding: 0px 10px;
 }
 
 .rounded-img {
     border-radius: 20px;
-    width: 270px;
-    height: 270px;
+    width: 100%;
+    /* max-width: 290px; */
+    height: 290px;
     object-fit: cover;
     box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.2);
-    margin: 10px; /* Tambahkan margin untuk jarak antar gambar */
+    /* margin: 10px; */
 }
 
 .rounded-img img {
-    width: 100%; /* Lebar gambar 100% dari container */
-    height: 100%; /* Tinggi gambar 100% dari container */
-    object-fit: cover; /* Gambar akan menutupi seluruh area tanpa meregang */
-}
-
-.row {
-    justify-content: center; /* Mengatur gambar tetap rapi di tengah */
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
 }
 
 /* aabout */
 .tastyFood {
     background-color: #f4f4f4;
-    padding: 50px 0 50px; /* Ubah padding bawah menjadi lebih kecil */
-    max-height: 800px;
+    /* padding: 50px 0 50px; Ubah padding bawah menjadi lebih kecil */
+    /* max-height: 800px; */
     display: flex;
     flex-direction: column; /* Atur arah elemen menjadi kolom */
     align-items: center; /* Center elemen di dalam */
@@ -217,7 +418,7 @@ html {
 
 .visi {
     background-color: white;
-    padding: 30px 0; /* Menambahkan ruang di atas dan bawah */
+    padding: 60px 0 0; /* Menambahkan ruang di atas dan bawah */
     min-height: 400px; /* Atur tinggi minimum untuk elemen */
 }
 
@@ -229,8 +430,8 @@ html {
 
 .tasty-food-section {
     display: flex;
-    max-width: 1100px;
-    margin: 100px auto;
+    max-width: 95%;
+    margin: 65px auto;
     align-items: center;
     justify-content: space-between;
 }
@@ -258,18 +459,13 @@ html {
     margin-bottom: 15px;
 }
 
-.image-content {
-    display: flex;
-    gap: 5px;
-    margin-right: 0; /* Menghilangkan margin negatif */
-    overflow: hidden;
-}
 
 .image-content img {
     width: 250px;
     height: 350px;
     border-radius: 17px;
     object-fit: cover;
+    padding: 1px;
 }
 
 .rounded-image, .rounded-image-visi, .rounded-image-misi{
@@ -280,7 +476,7 @@ html {
 
 .rounded-image-visi {
     width: 250px; /* Atur lebar kotak */
-    height: 250px; /* Atur tinggi kotak */
+    height: 320px; /* Atur tinggi kotak */
     object-fit: cover; /* Pastikan gambar terpotong proporsional */
     overflow: hidden;
     justify-content: center;
@@ -297,12 +493,11 @@ html {
     border-radius: 15px; /* Opsional: Untuk memberikan efek sudut melengkung */
 }
 
-
 /* Responsivitas */
 @media (max-width: 768px) {
     .tasty-food-section {
         flex-direction: column; /* Teks dan gambar akan tersusun vertikal pada layar kecil */
-        margin: 100px auto;
+        /* margin: 100px auto; */
     }
 
     .text-content {
@@ -319,22 +514,43 @@ html {
         height: 300px;
         border-radius: 30px;
     }
+
+    .rounded-image-misi {
+        max-width: 100%; /* Menyesuaikan ukuran gambar pada perangkat kecil */
+    }
+
+    .text-content {
+        text-align: center; /* Mengatur teks menjadi rata tengah pada perangkat kecil */
+    }
+}
+
+@media (max-width: 480px) {
+    .image-content img {
+        width: 180px;
+        height: 300px;
+        border-radius: 30px;
+    }
+
+    .rounded-image-misi {
+        max-width: 90%; /* Mengurangi ukuran gambar pada perangkat sangat kecil */
+        margin: 0 auto; /* Mengatur gambar agar berada di tengah */
+    }
+
+    .text-content {
+        padding: 10px; /* Menambahkan padding untuk teks agar tidak terlalu dekat dengan tepi */
+    }
 }
 
 /* News */
 .news-content {
     background-color: #f4f4f4;
     flex-direction: column; /* Atur arah elemen menjadi kolom */
-    padding: 50px 0 50px; /* Ubah padding bawah menjadi lebih kecil */
+    padding: 50px 15px; /* Ubah padding bawah menjadi lebih kecil */
     align-items: center; /* Center elemen di dalam */
     display: flex;
     height: auto;
 }
 
-.news-other {
-    background-color: #ffffff;
-    padding: 30px 0 30px; /* Ubah padding bawah menjadi lebih kecil */
-}
 
 .row {
     display: flex; /* Menggunakan flexbox untuk satu baris */
@@ -354,20 +570,13 @@ html {
     line-height: 1.5;
 }
 
-.news-content {
-    background-color: #f4f4f4;
-    padding: 50px 0 50px; /* Ubah padding bawah menjadi lebih kecil */
-    height: auto;
-    flex-direction: column; /* Atur arah elemen menjadi kolom */
-}
-
 .rounded-image-news {
     width: 100%; /* Lebar lebih besar */
     height: 600px; /* Tinggi lebih kecil */
     object-fit: cover; /* Pastikan gambar tetap proporsional */
     overflow: hidden;
     justify-content: center;
-    margin: 0 10px; /* Jarak antar gambar */
+    /* margin: 0 10px; Jarak antar gambar */
     border-radius: 15px; /* Opsional: Untuk memberikan efek sudut melengkung */
 }
 
@@ -389,6 +598,13 @@ html {
     align-items: center;
 }
 
+@media (max-width: 576px) {
+    .btn-black {
+        width: 100%; /* Mengatur lebar tombol agar penuh */
+        padding: 15px; /* Menambah padding agar tombol terlihat lebih besar */
+    }
+}
+
 .btn-black:hover {
     background-color: #333; /* Warna latar belakang saat hover */
 }
@@ -402,6 +618,11 @@ html {
     margin-top: 1rem;
 
     margin-bottom: 5px;
+}
+
+.news-other {
+    background-color: #ffffff;
+    padding: 30px 0 0px; /* Ubah padding bawah menjadi lebih kecil */
 }
 
 .news-other-title {
@@ -524,11 +745,44 @@ html {
     left: 0;
 }
 
+.botten {
+    display: grid;
+    place-items: center; /* Menengahkan item secara horizontal dan vertikal */
+    /* height: 100vh; Mengatur tinggi kontainer ke 100% viewport */
+    padding-bottom: 25px;
+    margin: auto;
+}
+
+.btn-more {
+    margin-top: 20px;
+    padding: 10px 20px;
+    background-color: #000;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    text-transform: uppercase;
+    font-weight: bold;
+    text-decoration: none;
+}
+
+.btn-more:hover {
+    background-color: #555; /* Change to a lighter shade */
+    color: #fff; /* Maintain text color */
+    transition: background-color 0.3s; /* Smooth transition */
+}
+
 /* contact */
+.contact-coontent{
+    margin-bottom: 50px;
+    padding-bottom: 25px;
+}
+
 .contact-form-section {
-    padding: 50px;
+    padding: 50px 20px;
     background-color: #fff;
 }
+
+
 
 .contact-form-section input,
 .contact-form-section textarea {
@@ -580,6 +834,7 @@ html {
     font-size: 16px;
     margin: 0;
 }
+
 /* ICONS */
 .body-contact {
     font-family: Arial, sans-serif;
@@ -588,7 +843,7 @@ html {
     display: flex;
     height: 50vh;
     margin: 0;
-        background-color: #fff;
+    background-color: #fff;
 }
 .kontak-info {
     justify-content: space-around;
@@ -596,11 +851,11 @@ html {
     width: 80%;
 
 }
-.contact-info {
+.contact-person {
     text-align: center;
     margin-top: 50px;
 }
-.contact-info .icon {
+.contact-person .icon {
     background-color: black;
     justify-content: center;
     align-items: center;
@@ -611,19 +866,50 @@ html {
     height: 80px;
     width: 80px;
 }
-.contact-info h5 {
+.contact-person h5 {
     font-weight: bold;
     margin-bottom: 10px;
 }
 
 /* Maps */
+.maps {
+    margin-top: 50px;
+    margin-bottom: 60px;
+    display: flex;
+    justify-content: center;
+}
+
 #map {
+    height: 550px;
+    width: 95%;
+    max-width: 100%; /* Membatasi lebar peta maksimal 100% dari layar */
+    max-height: 100vh; /* Membatasi tinggi peta maksimal 100% dari tinggi viewport */
+}
+
+/* Responsivitas agar ukuran peta tetap proporsional di layar kecil */
+@media (max-width: 1200px) {
+    #map {
+        width: 90%; /* Lebar peta di layar kecil */
+        height: 400px; /* Tinggi yang tetap proporsional */
+    }
+}
+
+/* Responsivitas untuk layar yang lebih kecil lagi */
+@media (max-width: 768px) {
+    #map {
+        width: 100%; /* Lebar penuh untuk layar sangat kecil */
+        height: 300px; /* Lebih kecil lagi untuk layar yang sangat sempit */
+    }
+}
+
+/* #map {
     height: 500px;
+    margin: 5rem;
   }
 
   gmp-map {
     height: 400px;
-  }
+  } */
 
 /* Footer */
 .footer {
@@ -657,6 +943,8 @@ html {
     border-radius: 50%;
     background-color: #3b5998;
 }
+
+
 .social-icons a.twitter {
     background-color: #1da1f2;
 }
@@ -679,33 +967,14 @@ html {
 .contact-info li i {
     margin-right: 10px;
 }
+
+.contact-info {
+    margin-bottom: 50px;
+}
+
 .list-unstyled li {
     margin-bottom: 10px;
     font-weight: 700;
     font-size: small;
 }
 
-.botten {
-    display: grid;
-    place-items: center; /* Menengahkan item secara horizontal dan vertikal */
-    /* height: 100vh; Mengatur tinggi kontainer ke 100% viewport */
-    padding-bottom: 25px;
-}
-
-.btn-more {
-    margin-top: 20px;
-    padding: 10px 20px;
-    background-color: #000;
-    color: #fff;
-    border: none;
-    border-radius: 5px;
-    text-transform: uppercase;
-    font-weight: bold;
-    text-decoration: none;
-}
-
-.btn-more:hover {
-    background-color: #555; /* Change to a lighter shade */
-    color: #fff; /* Maintain text color */
-    transition: background-color 0.3s; /* Smooth transition */
-}

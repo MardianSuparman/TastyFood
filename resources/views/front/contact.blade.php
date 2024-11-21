@@ -4,18 +4,21 @@
         <h1 class="mb-3"><b>KONTAK KAMI</b></h1>
     </div>
 @endsection
+@section('style')
+    <!-- leaflet CSS -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+@endsection
 @push('scripts')
-
     {{-- <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB41DRUbKWJHPxaFjMAwdrzWzbVKartNGg&callback=initMap" async
         defer></script> --}}
 
     {{-- <script type="module" src="{{ asset('assets/front/js/index.js') }}"></script> --}}
 
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
+    {{-- <meta name="viewport" content="width=device-width, initial-scale=1.0"> --}}
+    {{-- <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" /> --}}
 @endpush
 @section('content')
-    <section class="contact-coontent">
+    <section class="contact-coontent" style="background-color: #ffffff">
 
         <div class="contact-form-section">
             <div class="container">
@@ -78,31 +81,37 @@
             </div>
         </div> --}}
 
-        <div class="container mb-3">
-            <div class="row">
-                <div class="col-12 col-md-4 col-sm-4  contact-info">
-                    <div class="icon">
-                        <i class="fas fa-envelope"></i>
+        @php
+            $contact = App\Models\Contact::get();
+        @endphp
+
+        @foreach ($contact as $item)
+            <div class="container mb-5">
+                <div class="row">
+                    <div class="col-12 col-md-4 col-sm-4  contact-person">
+                        <div class="icon">
+                            <i class="fas fa-envelope"></i>
+                        </div>
+                        <h5>EMAIL</h5>
+                        <p>{{ $item->email }}</p>
                     </div>
-                    <h5>EMAIL</h5>
-                    <p>tastyfood@gmail.com</p>
-                </div>
-                <div class="col-md-4 contact-info">
-                    <div class="icon">
-                        <i class="fas fa-phone"></i>
+                    <div class="col-md-4 contact-person">
+                        <div class="icon">
+                            <i class="fas fa-phone"></i>
+                        </div>
+                        <h5>PHONE</h5>
+                        <p>{{ $item->NoTlpn }}</p>
                     </div>
-                    <h5>PHONE</h5>
-                    <p>+62 812 3456 7890</p>
-                </div>
-                <div class="col-md-4 contact-info">
-                    <div class="icon">
-                        <i class="fas fa-map-marker-alt"></i>
+                    <div class="col-md-4 contact-person">
+                        <div class="icon">
+                            <i class="fas fa-map-marker-alt"></i>
+                        </div>
+                        <h5>LOCATION</h5>
+                        <p>{{ $item->adres }}</p>
                     </div>
-                    <h5>LOCATION</h5>
-                    <p>Kota Bandung, Jawa Barat</p>
                 </div>
             </div>
-        </div>
+        @endforeach
     </section>
 
     <section class="maps">
@@ -112,7 +121,17 @@
             <gmp-advanced-marker position="47.648994,-122.3503845" title="Seattle, WA"></gmp-advanced-marker>
         </gmp-map> --}}
 
-        <div id="map"></div>
+        {{-- <div id="map"></div> --}}
+
+        <div id="map">
+            @php
+                $contact = App\Models\Contact::first();
+            @endphp
+            <script>
+                // Ambil alamat dari database yang dikirim melalui controller
+                var adres = "{{ $contact->adres }}";
+            </script>
+        </div>
 
     </section>
 
@@ -124,13 +143,20 @@
     <script>(g=>{var h,a,k,p="The Google Maps JavaScript API",c="google",l="importLibrary",q="__ib__",m=document,b=window;b=b[c]||(b[c]={});var d=b.maps||(b.maps={}),r=new Set,e=new URLSearchParams,u=()=>h||(h=new Promise(async(f,n)=>{await (a=m.createElement("script"));e.set("libraries",[...r]+"");for(k in g)e.set(k.replace(/[A-Z]/g,t=>"_"+t[0].toLowerCase()),g[k]);e.set("callback",c+".maps."+q);a.src=`https://maps.${c}apis.com/maps/api/js?`+e;d[q]=f;a.onerror=()=>h=n(Error(p+" could not load."));a.nonce=m.querySelector("script[nonce]")?.nonce||"";m.head.append(a)}));d[l]?console.warn(p+" only loads once. Ignoring:",g):d[l]=(f,...n)=>r.add(f)&&u().then(()=>d[l](f,...n))})
     ({key: "AIzaSyB41DRUbKWJHPxaFjMAwdrzWzbVKartNGg", v: "weekly"});</script> --}}
 
-    <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
-    <script>
+    {{-- <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script> --}}
+    {{-- <script>
         var map = L.map('map').setView([-6.943196154140334, 107.66395896086692], 20); // Koordinat Surabaya
         L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
             maxZoom: 19,
             attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
         }).addTo(map);
         L.marker([-6.943196154140334, 107.66395896086692]).addTo(map).bindPopup('Lokasi Saya').openPopup();
-    </script>
+    </script> --}}
+
 @endsection
+
+@push('script')
+    <!-- leaflet JS -->
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+    <script src="{{ asset('assets/front/js/index.js') }}"></script>
+@endpush

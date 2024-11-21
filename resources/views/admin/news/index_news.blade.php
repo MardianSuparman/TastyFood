@@ -14,7 +14,8 @@
                         <th style="width: 10px">#</th>
                         <th>Images</th>
                         <th>Title</th>
-                        <th>Subtitle</th>
+                        <th>Content</th>
+                        <th>Deskripsi</th>
                         <th style="text-align: end">Action</th>
                     </tr>
                 </thead>
@@ -24,11 +25,28 @@
                         <tr class="align-middle">
                             <td>{{ $no++ }}</td>
                             <td>
-                                <img src="{{ asset('/storage/news/' . $data->image) }}" class="rounded" style="width: 150px">
+                                <img src="{{ asset('/storage/news/' . $data->image) }}" class="rounded"
+                                    style="width: 150px; height: 150px; object-fit: cover;">
                             </td>
-                            <td>{{$data->title}}</td>
-                            <td>{{$data->subtitle}}</td>
                             <td>
+                                <span class="text-toggle" onclick="toggleText(this)">
+                                    {{ Str::limit($data->title, 25, ' ...') }}
+                                </span>
+                                <span class="full-text" style="display: none;">{{ $data->title }}</span>
+                            </td>
+                            <td>
+                                <span class="text-toggle" onclick="toggleText(this)">
+                                    {{ Str::limit($data->content, 80, ' ...') }}
+                                </span>
+                                <span class="full-text" style="display: none;">{{ $data->content }}</span>
+                            </td>
+                            <td>
+                                <span class="text-toggle" onclick="toggleText(this)">
+                                    {{ Str::limit($data->deskripsi, 80, ' ...') }}
+                                </span>
+                                <span class="full-text" style="display: none;">{{ $data->deskripsi }}</span>
+                            </td>
+                            <td style="width: 145px">
                                 <form action="{{ route('news.destroy', $data->id) }}" method="POST" class="float-end">
                                     @csrf
                                     @method('DELETE')
@@ -42,7 +60,7 @@
                         </tr>
                     @empty
                         <tr>
-                            <td colspan="5" class="text-center">
+                            <td colspan="6" class="text-center">
                                 Data Data Belum Tersedia.
                             </td>
                         </tr>
@@ -52,4 +70,21 @@
             {!! $news->withQueryString()->links('pagination::bootstrap-4') !!}
         </div> <!-- /.card-body -->
     </div> <!-- /.card -->
+
+    <script>
+        function toggleText(element) {
+            const fullTextElement = element.nextElementSibling; // Ambil elemen berikutnya yang merupakan teks penuh
+            const isHidden = fullTextElement.style.display === 'none';
+
+            // Tampilkan atau sembunyikan teks penuh
+            if (isHidden) {
+                fullTextElement.style.display = 'inline'; // Tampilkan teks penuh
+                element.style.display = 'none'; // Sembunyikan teks terbatas
+            } else {
+                fullTextElement.style.display = 'none'; // Sembunyikan teks penuh
+                element.style.display = 'inline'; // Tampilkan teks terbatas
+            }
+        }
+    </script>
+
 @endsection

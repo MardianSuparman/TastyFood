@@ -13,43 +13,41 @@ html {
 
 /* header */
 .background-image {
-    background-size: cover;
     background-position: center;
-    height: 100%;
-    width: 100%;
-    position: relative;
-    color: white;
+    background-size: cover;
     overflow-x: hidden;
     overflow-y: hidden;
+    position: relative;
+    color: white;
+    height: 100%;
+    width: 100%;
 }
 
 .hero {
     background-image: url('/assets/front/assets/img/img-4.png');
     background-size: cover;
-    height: 125vh;
-    width: 125vh;
     position: absolute;
-    top: -144px;
-    right: -195px;
     color: white;
+    height: 125vh;
+    right: -195px;
+    width: 125vh;
+    top: -144px;
     z-index: 1;
+}
+
+.navbar {
+    justify-content: space-between;
+    background: transparent;
+    position: relative;
+    display: flex;
+    padding: 30px;
 }
 
 .navbar-brand {
     font-size: 1.8rem;
-    font-family: Arial, sans-serif;
+    /* font-family: Arial, sans-serif; */
     margin-left: -80px;
     color: #000000;
-}
-
-.navbar {
-    background: transparent;
-    padding: 30px;
-}
-
-.container h1 {
-    font-size: 3em;
-    font-weight: bold;
 }
 
 .navbar-nav .nav-link {
@@ -60,6 +58,20 @@ html {
 
 .navbar-nav .nav-link:hover {
     color: #ddd;
+}
+
+.navbar-toggler {
+    background-color: transparent; /* Menghilangkan background default */
+    transform: translateY(-50%); /* Pusatkan secara vertikal */
+    position: absolute; /* Memungkinkan posisi di luar aliran normal */
+    display: flex;
+    border: none; /* Menghilangkan border */
+    left: 10px; /* Jarak dari sisi kiri */
+    top: 50%; /* Vertically center */
+}
+
+.navbar-toggler:focus {
+    outline: none; /* Menghapus outline saat tombol difokuskan */
 }
 
 .content {
@@ -77,6 +89,11 @@ html {
     color: #000000;
 }
 
+.container h1 {
+    font-size: 3em;
+    font-weight: bold;
+}
+
 .content h1 {
     font-size: 3em;
     font-weight: 300px;
@@ -91,11 +108,11 @@ html {
     /* Black color */
     width: 12%;
     /* Fixed width */
-    margin: 20px 0;
+    /* margin: 20px 0; */
     /* Margin to center and space out */
-    position: relative;
+    /* position: relative; */
     /* Keeps it in place relative to its container */
-    right: -3px;
+    /* right: -3px; */
 }
 
 p {
@@ -125,6 +142,164 @@ p {
     background-color: #333; /* Warna latar belakang saat hover */
 }
 
+/* Sidebar */
+.sidebar {
+    background-color: rgba(0, 0, 0, 0.8);
+    /* justify-content: space-between; */
+    transition: left 0.3s ease;
+    flex-direction: column;
+    overflow-y: auto; /* Memungkinkan scroll jika konten terlalu panjang */
+    position: fixed;
+    display: flex;
+    padding: 20px;
+    z-index: 1000;
+    height: 100vh; /* Tinggi penuh */
+    left: -300px; /* Mulai di luar layar sebelah kiri */
+    width: 300px;
+    top: 0;
+}
+
+.sidebar.show {
+    left: 0; /* Menampilkan sidebar saat aktif */
+}
+
+.sidebar-header {
+    display: flex;
+    align-items: center; /* Menyelaraskan item secara vertikal */
+    justify-content: space-between; /* Memberi jarak antara tombol dan judul */
+    margin-bottom: 20px; /* Jarak di bawah header */
+}
+
+.close-btn {
+    background: none;
+    border: none;
+    font-size: 2rem;
+    color: white;
+    cursor: pointer;
+}
+
+.sidebar-header h2 {
+    color: white;
+    margin: 0; /* Menghapus margin default */
+    font-size: 1.5rem; /* Menyesuaikan ukuran font jika perlu */
+}
+
+/* Media Query untuk perangkat lebih kecil */
+@media (max-width: 768px) {
+    .hero {
+        height: 70vh; /* Sesuaikan tinggi untuk perangkat kecil */
+        width: 61vw; /* Sedikit kurangi lebar di perangkat kecil */
+        right: -95px; /* Atur offset agar tidak menghalangi */
+    }
+}
+
+@media (max-width: 480px) {
+    .hero {
+        height: 60vh; /* Sesuaikan tinggi lebih kecil untuk ponsel */
+        width: 70vw; /* Lebar diatur lebih kecil */
+        right: -25px; /* Offset ke kanan lebih kecil di ponsel */
+    }
+}
+
+/* Responsif untuk perangkat kecil */
+@media (max-width: 768px) {
+    /* Navbar */
+    .navbar {
+        padding: 20px;
+    }
+
+    .navbar-brand {
+        font-size: 1.5rem;
+        margin-left: unset;
+    }
+
+    .navbar-nav .nav-link {
+        margin-right: 10px;
+        margin-top: 5px;
+    }
+
+    .navbar-toggler {
+        left: 10px; /* Jarak dari sisi kiri */
+        top: 10px; /* Jarak dari atas untuk memberi ruang */
+    }
+
+    /* Content */
+    .content {
+        top: 60%;
+        left: 45px;
+        right: 45px;
+        max-width: 100%;
+        padding: 0 15px;
+        transform: translateY(-50%);
+    }
+
+    .content h1 {
+        font-size: 2.2em;
+    }
+
+    /* Button */
+    .btn-black {
+        width: 100%;
+        font-size: 16px;
+        padding: 12px 20px;
+    }
+
+    .background-image{
+        height: 80%;
+    }
+
+}
+
+@media (max-width: 480px) {
+    /* Navbar */
+    .navbar {
+        padding: 15px;
+    }
+
+    .navbar-brand {
+        font-size: 1.2rem;
+        margin-left: 20;
+    }
+
+    .navbar-nav .nav-link {
+        margin-right: 5px;
+        margin-top: 5px;
+        font-size: 0.9rem;
+    }
+
+    .navbar-toggler {
+        left: 5px; /* Jarak dari sisi kiri */
+        top: 8px; /* Jarak dari atas untuk memberi ruang */
+    }
+
+    /* Content */
+    .content {
+        top: 60%;
+        left: 20px;
+        right: 20px;
+        max-width: 100%;
+        padding: 0 10px;
+        transform: translateY(-50%);
+    }
+
+    .content h1 {
+        font-size: 1.8em;
+    }
+
+    /* Button */
+    .btn-black {
+        width: 100%;
+        font-size: 14px;
+        padding: 10px 15px;
+    }
+
+    .background-image{
+        height: 80%;
+    }
+
+}
+
+
 /* Content About */
 .aboute p{
     text-align: center;
@@ -150,7 +325,7 @@ p {
     background-blend-mode: darken; /* Blend mode untuk mempergelap gambar */
     width: 100%; /* Atur lebar */
     /* height: 630px; Atur tinggi */
-    padding: 5rem;
+    padding: 3rem;
     background-size: cover; /* Sesuaikan ukuran gambar */
     background-position: center; /* Pusatkan gambar */
     position: relative;
@@ -165,10 +340,11 @@ p {
     padding: 20px; /* Padding untuk card */
     text-align: center; /* Pusatkan teks di dalam kartu */
     border-radius: 15px; /* Sudut melengkung */
-    max-width: 270px; /* Lebar maksimum */
-    min-height: 300px; /* Tinggi minimum untuk kartu (pendek) */
+    max-width: 325px; /* Lebar maksimum */
+    min-height: 355px; /* Tinggi minimum untuk kartu (pendek) */
     margin-top: 100px; /* Jarak atas dari galeri */
     transition: transform 0.3s ease, background-color 0.3s ease; /* Transisi halus saat hover */
+    align-items: center;
 }
 .card:hover {
     transform: scale(1.05);
@@ -208,10 +384,18 @@ p {
 .container-news {
     display: flex;
     flex-wrap: wrap;
-
-    padding-left: 2rem;
-    padding-right: 2rem;
+    padding-left: 4rem;
+    padding-right: 4rem;
     margin-top: 1rem;
+}
+
+@media (max-width: 480px) {
+
+    .container-news {
+        padding-left: 1rem;
+        padding-right: 1rem;
+    }
+
 }
 
 .news-column {
@@ -297,7 +481,6 @@ p {
     flex-direction: column;
     justify-content: space-between;
     flex-grow: 1; /* Membuat .news-body mengisi ruang tersisa */
-
 }
 
 .news-body a {
@@ -324,7 +507,6 @@ p {
     display: inline-block;
     text-decoration: none;
     margin-top: auto;
-
 }
 
 .card-news-big {
@@ -358,11 +540,10 @@ p {
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
-    gap: 5px;
+    gap: 20px; /* 5px */
     padding-bottom: 15px;
     margin-top: 10px;
     border-radius: 10px; /* Radius sudut */
-
 }
 
 .gallery-title {
@@ -374,9 +555,14 @@ p {
     /* height: 100vh; Mengatur tinggi kontainer ke 100% viewport */
 }
 
-.gallery .col-md-3 {
-    padding: 5px; /* Adjust the padding to control the spacing */
+@media (min-width: 768px) {
+
+    .gallery .col-md-3 {
+        padding: 0px 0px; /* Adjust the padding to control the spacing */
+    }
+
 }
+
 
 .rounded-border {
     border: 1px solid #ddd; /* Light border */
@@ -403,12 +589,13 @@ p {
     position: absolute;
     top: 50%;
     left: 50%;
-    width: 100%; /* Adjust based on your image dimensions */  /* auto */
-    height: 100%; /* Adjust based on your image dimensions */
-    object-fit: cover;
-    transform: translate(-50%, -50%); /* Center the image */
-    transition: opacity 0.3s; /* Smooth transition for opacity */
+    width: 100%; /* Pastikan lebar 100% */
+    height: 100%; /* Pastikan tinggi 100% */
+    object-fit: cover; /* Memastikan gambar mengisi area dan terpotong jika perlu */
+    transform: translate(-50%, -50%); /* Menempatkan gambar di tengah */
+    transition: opacity 0.3s; /* Transisi yang halus untuk opacity */
 }
+
 
 .square-crop:hover img {
     opacity: 0.8; /* Fade the image slightly on hover */
@@ -482,7 +669,7 @@ p {
     display: grid;
     place-items: center; /* Menengahkan item secara horizontal dan vertikal */
     /* height: 100vh; Mengatur tinggi kontainer ke 100% viewport */
-    padding-bottom: 25px;
+    padding-bottom: 30px;
 }
 
 .btn-more {
@@ -513,7 +700,6 @@ p {
 
 /* section UI */
 
-
     /* Responsive adjustments */
     @media (max-width: 768px) {
         .card-image {
@@ -528,7 +714,9 @@ p {
 
         .square-crop img {
             width: 100%; /* Responsive gallery images */
-            height: auto; /* Maintain aspect ratio */
+            /* height: auto; Maintain aspect ratio */
+            object-fit: cover;
+
         }
 
         .news-column {

@@ -38,12 +38,13 @@ class NewsController extends Controller
         $this->validate($request, [
             'image' => 'required|image|mimes:png,jpg,jpeg',
             'title' => 'required',
-            'subtitle' => 'required',
+            'content' => 'required',
         ]);
 
         $news = new Berita();
         $news->title = $request->title;
-        $news->subtitle = $request->subtitle;
+        $news->content = $request->content;
+        $news->deskripsi = $request->deskripsi;
 
         // Upload Image
         $images = $request->file('image');
@@ -71,7 +72,7 @@ class NewsController extends Controller
     {
         //Redirect Update News
         $news = Berita::findOrFail($id);
-        return view('admin.news.create_news', compact('news'));
+        return view('admin.news.update_news', compact('news'));
     }
 
     /**
@@ -81,28 +82,44 @@ class NewsController extends Controller
     {
         //Update Aboute
         $this->validate($request, [
-            'image' => 'required',
+            'image' => 'nullable|image|max:2048',
             'title' => 'required',
-            'subtitle' => 'required',
+            'content' => 'required',
         ]);
 
         $news = Berita::findOrFail($id);
-        $news -> title = $request -> title;
-        $news -> subtitle = $request -> subtitle;
+        $news->title = $request->title;
+        $news->content = $request->content;
+        $news->deskripsi = $request->deskripsi;
 
-        // upload image
-        $images = $request->file('image');
-        $images->storeAs('public/news/', $images->hashName());
+        // Tangani unggah gambar jika gambar baru disediakan
+        if ($request->hasFile('image')) {
+            // Unggah gambar baru
+            $image = $request->file('image');
+            $imagePath = $image->storeAs('public/news', $image->hashName());
 
-        // delete produk
-        Storage::delete('public/news/'. $news->image);
+            // Hapus gambar lama jika ada
+            if ($news->image && Storage::exists('public/news/' . $news->image)) {
+                Storage::delete('public/news/' . $news->image);
+            }
 
-        $news->image = $images->hashName();
+            // Simpan nama file gambar baru
+            $news->image = $image->hashName();
+        }
+
+        // // upload image
+        // $images = $request->file('image');
+        // $images->storeAs('public/news/', $images->hashName());
+
+        // // delete image
+        // Storage::delete('public/news/' . $news->image);
+
+        // $news->image = $images->hashName();
 
         $news->save();
         Alert::success('Success', 'Data updated successfully')->autoClose(2000);
 
-        return redirect()->route('aboute.index');
+        return redirect()->route('news.index');
     }
 
     /**

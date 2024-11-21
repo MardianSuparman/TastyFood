@@ -1,10 +1,15 @@
 {{-- Footer --}}
+
+
+
 <section class="content-footer">
     <div class="footer">
         <div class="row">
             <div class="col-md-6">
                 <h5>Tasty Food</h5>
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+                <p class="coustom-paragraf">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore
+                    et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
+                    aliquip ex ea commodo consequat.</p>
                 <div class="social-icons m-2">
                     <a href="#" class="facebook fa-brands fa-facebook"></a>
                     <a href="#" class="twitter fa-brands fa-twitter"></a>
@@ -30,10 +35,15 @@
             </div>
             <div class="col-md-2">
                 <h5>Contact Info</h5>
+                @php
+                    $item = App\Models\Contact::first();
+                @endphp
                 <ul class="list-unstyled contact-info">
-                    <li><i class="fas fa-envelope"></i> tastyfood@gmail.com</li>
-                    <li><i class="fas fa-phone"></i> +62 812 3456 7890</li>
-                    <li><i class="fas fa-map-marker-alt"></i> Kota Bandung, Jawa Barat</li>
+                    {{-- @foreach ($contact as $item) --}}
+                        <li><i class="fas fa-envelope"></i>{{ $item->email }}</li>
+                        <li><i class="fas fa-phone"></i>{{ $item->NoTlpn }}</li>
+                        <li><i class="fas fa-map-marker-alt"></i> {{ $item->adres }} </li>
+                    {{-- @endforeach --}}
                 </ul>
             </div>
         </div>

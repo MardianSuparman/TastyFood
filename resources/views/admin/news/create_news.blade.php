@@ -32,10 +32,20 @@
                     @enderror
                 </div>
                 <div class="mb-3">
-                    <label for="subtitle" class="form-label">Subtitle</label>
-                    <input type="text" class="form-control @error('subtitle') is-invalid @enderror" name="subtitle"
-                        id="subtitle" placeholder="Subtitle" required></input>
-                    @error('subtitle')
+                    <label for="content" class="form-label">Content</label>
+                    <textarea name="content" class="form-control @error('content') is-invalid @enderror" id="content" rows="4"
+                        placeholder="content"></textarea>
+                    @error('content')
+                        <span class="invalid-feedback" role="alert">
+                            <strong>{{ $message }}</strong>
+                        </span>
+                    @enderror
+                </div>
+                <div class="mb-3">
+                    <label for="deskripsi" class="form-label">Deskripsi</label>
+                    <textarea name="deskripsi" class="form-control @error('deskripsi') is-invalid @enderror" id="deskripsi" rows="4"
+                        placeholder="deskripsi"></textarea>
+                    @error('deskripsi')
                         <span class="invalid-feedback" role="alert">
                             <strong>{{ $message }}</strong>
                         </span>

@@ -13,7 +13,11 @@ class MessageController extends Controller
      */
     public function index()
     {
-        //
+        //menampilkan data
+        $messages = Message::latest()->paginate(10);
+        confirmDelete("Delete", "Are you sure you want to delete?");
+
+        return view('admin.message.index_message', compact('messages'));
     }
 
     /**
@@ -41,7 +45,8 @@ class MessageController extends Controller
         $message->email =$request->email;
         $message->message =$request->message;
         $message->save();
-        Alert::success('Success', 'Data Added Successfully')->autoClose(2000);
+        Alert::toast('Succes', 'message sent successfully')->success('Succes', 'message sent successfully');
+
 
         return redirect()->route('contact');
     }
@@ -73,8 +78,12 @@ class MessageController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Message $message)
+    public function destroy( $id)
     {
-        //
+        //Delete Message
+        $messages = Message::findOrFail($id);
+        $messages->delete();
+        Alert::toast('Succes', 'Data successfully deleted')->success('Succes', 'Data successfully deleted');
+        return redirect()->route('message.index');
     }
 }

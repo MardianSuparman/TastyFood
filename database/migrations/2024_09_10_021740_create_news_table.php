@@ -15,7 +15,9 @@ return new class extends Migration
             $table->id();
             $table->string('image');
             $table->string('title');
-            $table->string('subtitle');
+            $table->text('content');
+            $table->text('deskripsi')->nullable(true);
+            $table->string('slug')->unique(); // Menambahkan kolom slug
             $table->timestamps();
         });
     }

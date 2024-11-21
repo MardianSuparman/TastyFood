@@ -37,19 +37,14 @@ class AbouteController extends Controller
     {
         //Add Aboute
         $this -> validate($request, [
-            'image'=> 'required|image|mimes:png,jpg,jpeg|max:2048',
             'title'=> 'required',
-            'subtitle'=> 'required',
+            'content'=> 'required',
         ]);
 
         $aboutes = new Aboute();
         $aboutes -> title = $request -> title;
-        $aboutes -> subtitle = $request -> subtitle;
-
-        // Upload Image
-        $images = $request->file('image');
-        $images -> storeAs('public/aboutes', $images->hashName());
-        $aboutes -> image = $images->hashName();
+        $aboutes -> content = $request -> content;
+        $aboutes -> deskripsi = $request -> deskripsi;
 
         $aboutes -> save();
         Alert::success('Success', 'Data Added Successfully')->autoClose(2000);
@@ -83,23 +78,14 @@ class AbouteController extends Controller
     {
         //Update Aboute
         $this->validate($request, [
-            'image' => 'required',
             'title'=> 'required',
-            'subtitle'=> 'required',
+            'content'=> 'required',
         ]);
 
         $aboutes = Aboute::findOrFail($id);
         $aboutes -> title = $request -> title;
-        $aboutes -> subtitle = $request -> subtitle;
-
-        // upload image
-        $images = $request->file('image');
-        $images->storeAs('public/aboutes/', $images->hashName());
-
-        // delete produk
-        Storage::delete('public/aboutes/'. $aboutes->image);
-
-        $aboutes->image = $images->hashName();
+        $aboutes -> content = $request -> content;
+        $aboutes -> deskripsi = $request -> deskripsi;
 
         $aboutes->save();
         Alert::success('Success', 'Data updated successfully')->autoClose(2000);
@@ -114,7 +100,6 @@ class AbouteController extends Controller
     {
         //Delete Aboute
         $aboutes = Aboute::findOrFail($id);
-        Storage::delete('public/aboutes/'. $aboutes->foto);
         $aboutes->delete();
         Alert::toast('Succes', 'Data successfully deleted')->success('Succes', 'Data successfully deleted');
         return redirect()->route('aboute.index');
